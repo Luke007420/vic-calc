@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Programming 1\\Mathcalc-vic\\mathcalc\\mathcalc.csproj": {}
+    "C:\\polytech stuff\\vic-calc\\mathcalc.csproj": {}
   },
   "projects": {
-    "H:\\Programming 1\\Mathcalc-vic\\mathcalc\\mathcalc.csproj": {
+    "C:\\polytech stuff\\vic-calc\\mathcalc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Programming 1\\Mathcalc-vic\\mathcalc\\mathcalc.csproj",
+        "projectUniqueName": "C:\\polytech stuff\\vic-calc\\mathcalc.csproj",
         "projectName": "mathcalc",
-        "projectPath": "H:\\Programming 1\\Mathcalc-vic\\mathcalc\\mathcalc.csproj",
-        "packagesPath": "C:\\Users\\bondli1\\.nuget\\packages\\",
-        "outputPath": "H:\\Programming 1\\Mathcalc-vic\\mathcalc\\obj\\",
+        "projectPath": "C:\\polytech stuff\\vic-calc\\mathcalc.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\polytech stuff\\vic-calc\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\bondli1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

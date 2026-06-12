@@ -6,54 +6,44 @@ namespace mathcalc
     {
         static void Main(string[] args)
         {
-            int choice;
-            Console.WriteLine("Math Calculator");
-            Console.WriteLine("You can select what type of calculation\nyou would like to do by pressing the number next to it");
-            choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Mathmatics Calculator: Type 'help' for commands");
 
-            switch (choice)
+            while (true)
             {
-                case 1:
-                    Binary();
-                    break;
-                case 2:
-                    Geometryvector();
-                    break;
-                case 3:
-                    Matrices();
-                    break;
-                case 4:
-                    Numbertheory();
-                    break;
-                case 5:
-                    Crypto();
-                    break;
-                default:
-                    Console.WriteLine("Wrong entry");
-                    break;
+                Console.Write("> ");
+                string input = Console.ReadLine().Trim();
+                if (!string.IsNullOrEmpty(input))
+                {
+                    parseCommand(input);
+                }
+            }
+
+            
+            
+        }
+        public static void parseCommand(string input)
+        {
+            string[] parts = input.Split(' ');
+            string command = parts[0].ToLower();
+
+            if (command == "help")
+            {
 
             }
+            else if (command == "caesaren")
+            {
+                Crypto.CaesarEncrypt(parts);
+            }
+            else if (command == "caesarde")
+            {
+                Crypto.CaesarDecrypt(parts);
+            }
+            else
+            {
+                Console.WriteLine("Unknown command type 'help' for commands ");
+            }
         }
-        public static void Binary()
-        {
-
-        }
-        public static void Geometryvector()
-        {
-
-        }
-        public static void Matrices()
-        {
-
-        }
-        public static void Numbertheory()
-        {
-
-        }
-        public static void Crypto()
-        {
-
-        }
+        
 
     }
 }
