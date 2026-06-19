@@ -8,63 +8,77 @@ namespace mathcalc
     {
         static void Main(string[] args)
         {
-            int choice;
-            Console.WriteLine("Math Calculator");
-            Console.WriteLine("You can select what type of calculation\nyou would like to do by pressing the number next to it");
-            choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Mathmatics Calculator: Type 'help' for commands");
 
-            switch (choice)
+            while (true)
             {
-                case 1:
-                    Binary();
-                    break;
-                case 2:
-                    Geometryvector();
-                    break;
-                case 3:
-                    Matrices();
-                    break;
-                case 4:
-                    Numbertheory();
-                    break;
-                case 5:
-                    Crypto();
-                    break;
-                case 6:
-                    mathcalc();
-                    break;
-                default:
-                    Console.WriteLine("Wrong entry");
-                    break;
+                Console.Write("> ");
+                string input = Console.ReadLine().Trim();
+                if (!string.IsNullOrEmpty(input))
+                {
+                    parseCommand(input);
+                }
+            }
 
+            
+            
+        }
+        public static void parseCommand(string input)
+        {
+            string[] parts = input.Split(' ');
+            string command = parts[0].ToLower();
+
+            if (command == "help")
+            {
+                Console.WriteLine("-- Lines --");
+                Console.WriteLine("Line a (x1 y1 x2 y2)       - Create a line named a");
+                Console.WriteLine("lengthLine a                - Calculate the length of line a");
+                Console.WriteLine("midpointLine a              - Calculate the midpoint of line a");
+                Console.WriteLine("gradientLine a              - Calculate the gradient of line a");
+                Console.WriteLine("rad2Deg a                   - Convert a from radians to degrees");
+                Console.WriteLine("deg2Rad a                   - Convert a from degrees to radians");
+                Console.WriteLine("");
+                Console.WriteLine("-- Vectors --");
+                Console.WriteLine("vec a (x y)                 - Create a vector named a");
+                Console.WriteLine("addVec a b                  - Add vectors a and b");
+                Console.WriteLine("subVec a b                  - Subtract vector a from b");
+                Console.WriteLine("dotVec a b                  - Dot product of vectors a and b");
+                Console.WriteLine("scalVec s a                 - Apply scalar s to vector a");
+                Console.WriteLine("");
+                Console.WriteLine("-- Matrices --");
+                Console.WriteLine("mat a (a b c d)             - Create a 2x2 matrix named a");
+                Console.WriteLine("addMat a b                  - Add matrices a and b");
+                Console.WriteLine("dotMat a b                  - Dot product of matrices a and b");
+                Console.WriteLine("scalMat s a                 - Apply scalar s to matrix a");
+                Console.WriteLine("detMat a                    - Calculate the determinant of matrix a");
+                Console.WriteLine("invMat a                    - Calculate the inverse of matrix a");
+                Console.WriteLine("");
+                Console.WriteLine("-- Number Theory --");
+                Console.WriteLine("numPrime a                  - Check if a (less than 10000) is prime");
+                Console.WriteLine("numCheckDigit [string]      - Identify code type and calculate check digit");
+                Console.WriteLine("numRand a X c m             - Generate random number using Linear Congruential Method");
+                Console.WriteLine("");
+                Console.WriteLine("-- Cryptography --");
+                Console.WriteLine("caesarEn \"text\"             - Encode text using Caesar cipher (n+3) mod 26");
+                Console.WriteLine("caesarDe \"text\"             - Decode text using Caesar cipher (n-3) mod 26");
+                Console.WriteLine("affineEn a b \"text\"         - Encrypt text using Affine cipher (aP+b) mod 26");
+                Console.WriteLine("affineDe a b \"text\"         - Decrypt text using Affine cipher (aP-b) mod 26");
+                Console.WriteLine("bruteAffine a b \"text\"      - Brute force decrypt using Affine cipher");
+            }
+            else if (command == "caesaren")
+            {
+                Crypto.CaesarEncrypt(parts);
+            }
+            else if (command == "caesarde")
+            {
+                Crypto.CaesarDecrypt(parts);
+            }
+            else
+            {
+                Console.WriteLine("Unknown command type 'help' for commands ");
             }
         }
         
-
-        public static void Binary()
-        {
-
-        }
-        public static void Geometryvector()
-        {
-
-        }
-        public static void Matrices()
-        {
-
-        }
-        public static void Numbertheory()
-        {
-
-        }
-        public static void Crypto()
-        {
-
-        }
-        public static void mathcalc()
-        {
-
-        }
 
     }
 }
