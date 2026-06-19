@@ -61,13 +61,55 @@ namespace mathcalc
             }
             Console.WriteLine(result);
         }
-        public static void AphineEncrypt(string[] parts)
+        public static void AffineEncrypt(string[] parts)
         {
+            int a = int.Parse(parts[1]);
+            int b = int.Parse(parts[2]);
+            string text = string.Join(" ", parts, 3, parts.Length - 3);
 
+            string result = "";
+            foreach (char c in text)
+            {
+                if (char.IsLetter(c))
+                {
+                    int P = char.ToUpper(c) - 'A';
+                    int encrypted = ((a * P + b) % 26 + 26) % 26;  // +26 handles negatives
+                    char encryptedChar = (char)(encrypted + 'A');
+                    result += encryptedChar;
+                }
+                // Ingores spaces and puncuation
+            }
+            Console.WriteLine(result);
         }
-        public static void AphineDecrypt(string[] parts)
+        public static void AffineDecrypt(string[] parts)
         {
-
+            int a = int.Parse(parts[1]);
+            int b = int.Parse(parts[2]);
+            string text = string.Join(" ", parts, 3, parts.Length - 3);
+            int aInverse = ModularInverse(a);
+            Console.WriteLine($"Debug: aInverse = {aInverse}");
+            string result = "";
+            foreach (char c in text)
+            {
+                if (char.IsLetter(c))
+                {
+                    int P = char.ToUpper(c) - 'A';
+                    int encrypted = ((aInverse * (P - b + 26)) % 26 + 26) % 26;  // +26 handles negatives
+                    char encryptedChar = (char)(encrypted + 'A');
+                    result += encryptedChar;
+                }
+                
+            }
+            Console.WriteLine(result);
+        }
+        private static int ModularInverse(int a)
+        {
+            for (int i = 1; i <= 26; i++)
+            {
+                if ((a * i) % 26 == 1)
+                    return i;
+            }
+            throw new Exception("No modular inverse exists - 'a' must be coprime with 26");
         }
     }
 }

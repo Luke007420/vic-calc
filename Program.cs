@@ -73,6 +73,14 @@ namespace mathcalc
             {
                 Crypto.CaesarDecrypt(parts);
             }
+            else if (command == "affineen")
+            {
+                Crypto.AffineEncrypt(parts);
+            }
+            else if (command == "affinede")
+            {
+                Crypto.AffineEncrypt(parts);
+            }
             else
             {
                 Console.WriteLine("Unknown command type 'help' for commands ");
