@@ -1,5 +1,7 @@
 ﻿
 
+using System.Diagnostics;
+
 namespace mathcalc
 {
     internal class Program
@@ -28,12 +30,17 @@ namespace mathcalc
                 case 5:
                     Crypto();
                     break;
+                case 6:
+                    mathcalc();
+                    break;
                 default:
                     Console.WriteLine("Wrong entry");
                     break;
 
             }
         }
+        
+
         public static void Binary()
         {
 
@@ -51,6 +58,10 @@ namespace mathcalc
 
         }
         public static void Crypto()
+        {
+
+        }
+        public static void mathcalc()
         {
 
         }
