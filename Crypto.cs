@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,6 +111,32 @@ namespace mathcalc
                     return i;
             }
             throw new Exception("No modular inverse exists - 'a' must be coprime with 26");
+        }
+        public static void BruteAffine(string[] parts)
+        {
+            string text = string.Join(" ", parts, 1, parts.Length - 1);
+            int[] validA = { 1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25 };
+
+            var stopwatch = Stopwatch.StartNew();
+            
+            foreach (int a in validA)
+            {
+                for (int b = 0; b < 26; b++)
+                {
+                    int aInverse = ModularInverse(a);
+                    string result = "";
+                    foreach (char c in text)
+                    {
+                        int p = char.ToUpper(c) - 'A';
+                        int decrpyted = ((aInverse * (p - b + 26)) % 26 + 26) % 26;
+                        result += (char)(decrpyted + 'A');
+
+                    }
+                }
+            }
+
+            stopwatch.Stop();
+            Console.WriteLine($"Time taken: {stopwatch.ElapsedMilliseconds}ms");
         }
     }
 }

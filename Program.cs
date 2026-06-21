@@ -27,6 +27,7 @@ namespace mathcalc
         {
             string[] parts = input.Split(' ');
             string command = parts[0].ToLower();
+            
 
             if (command == "help")
             {
@@ -79,7 +80,28 @@ namespace mathcalc
             }
             else if (command == "affinede")
             {
-                Crypto.AffineEncrypt(parts);
+                Crypto.AffineDecrypt(parts);
+            }
+            else if (command == "bruteAffine")
+            {
+                Crypto.BruteAffine(parts);
+            }
+            else if (command == "numprime")
+            {
+                Numbertheory.NumbPrime(int.Parse(parts[1]));
+            }
+            else if (command == "numrand")
+            {
+                Numbertheory.NumRand(
+                    int.Parse(parts[1]),
+                    int.Parse(parts[2]),
+                    int.Parse(parts[3]),
+                    int.Parse(parts[4])
+                );
+            }
+            else if (command == "numcheckdigit")
+            {
+                Numbertheory.NumCheckDigit(parts[1]);
             }
             else
             {
