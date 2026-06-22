@@ -52,5 +52,28 @@ namespace mathcalc
             Console.WriteLine($"| {result[0]} {result[1]} |");
             Console.WriteLine($"| {result[2]} {result[3]} |");
         }
+        public static void DotMatrix(string[] parts)
+        {
+            // Get the names of the two matrices e.g. "dotMat a b"
+            string nameA = parts[1];
+            string nameB = parts[2];
+
+            // Look up both matrices in the dictionary
+            double[] a = matrices[nameA];
+            double[] b = matrices[nameB];
+
+            // Multiply using the dot product formula for 2x2 matrices
+            double[] result = new double[]
+            {
+        a[0]*b[0] + a[1]*b[2],  // top left
+        a[0]*b[1] + a[1]*b[3],  // top right
+        a[2]*b[0] + a[3]*b[2],  // bottom left
+        a[2]*b[1] + a[3]*b[3]   // bottom right
+            };
+
+            // Print the result
+            Console.WriteLine($"| {result[0]} {result[1]} |");
+            Console.WriteLine($"| {result[2]} {result[3]} |");
+        }
     }
 }
