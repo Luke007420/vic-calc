@@ -88,16 +88,16 @@ namespace mathcalc
             int b = int.Parse(parts[2]);
             string text = string.Join(" ", parts, 3, parts.Length - 3);
             int aInverse = ModularInverse(a);
-            Console.WriteLine($"Debug: aInverse = {aInverse}");
+            
             string result = "";
             foreach (char c in text)
             {
                 if (char.IsLetter(c))
                 {
                     int P = char.ToUpper(c) - 'A';
-                    int encrypted = ((aInverse * (P - b + 26)) % 26 + 26) % 26;  // +26 handles negatives
-                    char encryptedChar = (char)(encrypted + 'A');
-                    result += encryptedChar;
+                    int decrypted = (aInverse * ((P - b % 26 + 26) % 26)) % 26;  // +26 handles negatives
+                    char decryptedChar = (char)(decrypted + 'A');
+                    result += decryptedChar;
                 }
                 
             }
@@ -121,9 +121,10 @@ namespace mathcalc
             
             foreach (int a in validA)
             {
+                int aInverse = ModularInverse(a);
                 for (int b = 0; b < 26; b++)
                 {
-                    int aInverse = ModularInverse(a);
+                    
                     string result = "";
                     foreach (char c in text)
                     {
@@ -132,11 +133,14 @@ namespace mathcalc
                         result += (char)(decrpyted + 'A');
 
                     }
+                    Console.WriteLine($"a={a}, b={b}: {result}");
                 }
+               
             }
 
             stopwatch.Stop();
             Console.WriteLine($"Time taken: {stopwatch.ElapsedMilliseconds}ms");
+
         }
     }
 }

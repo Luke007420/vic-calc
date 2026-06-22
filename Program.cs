@@ -82,7 +82,7 @@ namespace mathcalc
             {
                 Crypto.AffineDecrypt(parts);
             }
-            else if (command == "bruteAffine")
+            else if (command == "bruteaffine")
             {
                 Crypto.BruteAffine(parts);
             }
@@ -102,6 +102,18 @@ namespace mathcalc
             else if (command == "numcheckdigit")
             {
                 Numbertheory.NumCheckDigit(parts[1]);
+            }
+            else if (command == "mat")
+            {
+                Matrices.CreateMatrix(parts);
+            }
+            else if (command == "addmat")
+            {
+                Matrices.AddMatrix(parts);
+            }
+            else if (command == "dotmat")
+            {
+                Matrices.DotMatrix(parts);
             }
             else
             {
